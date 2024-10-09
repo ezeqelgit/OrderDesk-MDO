@@ -1,0 +1,13 @@
+@font-face {
+  font-family: "Inter";
+  src: url("./fonts/Inter.ttf");
+  font-style: normal;
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: "Roboto";
+  src: url("./fonts/Roboto.ttf");
+  font-style: normal;
+  font-weight: 400;
+}

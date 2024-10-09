@@ -1,0 +1,191 @@
+@use "sass:math"
+
+$base: 1920
+
+@function pxToVw($px)
+  @return math.div($px, $base) * 100vw
+
+.Authorization
+  width: 100%
+  height: 100%
+  background-image: url("./assets/img/background.png")
+  background-size: cover
+  background-position: center
+  background-repeat: no-repeat
+  display: flex
+  align-items: center
+  justify-content: center
+
+  > .block 
+    width: pxToVw(340)
+    border-radius: pxToVw(5)
+    background: rgb(255, 255, 255)
+    position: relative
+    padding: pxToVw(92) pxToVw(20) pxToVw(20)
+    box-sizing: border-box
+    display: flex
+    flex-direction: column
+    align-items: center
+    gap: pxToVw(28)
+    position: relative
+
+    > .title 
+      position: absolute
+      width: pxToVw(308)
+      height: pxToVw(56)
+      border-radius: pxToVw(5)
+      background: rgb(68, 162, 72)
+      display: flex
+      align-items: center
+      justify-content: center
+      left: 50%
+      top: -5%
+      transform: translate(-50%)
+
+      > span 
+        font-family: "Inter"
+        font-size: pxToVw(16)
+        color: rgb(255, 255, 255)
+        font-weight: 500
+        user-select: none
+
+    > .setParameters
+      width: 100%
+      display: flex
+      flex-direction: column
+      align-items: center
+      gap: pxToVw(20)
+
+      > .userNumber
+        width: 100%
+        display: flex
+        flex-direction: column
+        align-items: center
+
+        > .selectionParameters
+          text-align: left
+          width: pxToVw(244)
+          
+          > span
+            color: rgb(80, 176, 83)
+            font-size: pxToVw(12)
+            font-family: "Roboto"
+            font-weight: 400
+            user-select: none
+
+        > .inputParameters
+          width: 100%
+          height: pxToVw(37)
+          display: flex
+          align-items: center
+          gap: pxToVw(8)
+
+          > img 
+            width: pxToVw(24)
+            height: pxToVw(24)
+
+          > input
+            font-family: "Roboto"
+            font-size: pxToVw(14)
+            color: rgb(51, 51, 51)
+            font-weight: 400
+
+        > .separator
+          width: 100%
+          height: pxToVw(1)
+          background: rgb(204, 204, 204)
+
+        > .verification
+          width: 100%
+          height: pxToVw(20)
+          display: flex
+          align-items: center
+
+          > span 
+            color: rgb(218, 85, 85)
+            font-size: pxToVw(14)
+            font-weight: 400
+            font-family: "Roboto"
+            user-select: none
+
+      > .userPassword
+        width: 100%
+        display: flex
+        flex-direction: column
+        align-items: center
+
+        > .inputParameters
+          width: 100%
+          height: pxToVw(37)
+          display: flex
+          align-items: center
+          justify-content: space-between
+
+          > .wrapperInput
+            width: 100%
+            display: flex
+            align-items: center
+            gap: pxToVw(8)
+
+            > img 
+              width: pxToVw(24)
+              height: pxToVw(24)
+
+            > input
+              font-family: "Roboto"
+              font-size: pxToVw(14)
+              color: rgb(51, 51, 51)
+              font-weight: 400
+
+            > .visiblePassword
+              display: flex
+              align-items: center
+              justify-content: center
+              margin-left: auto
+
+              > img
+                width: pxToVw(24)
+                height: pxToVw(24)
+
+        > .separator
+          width: 100%
+          height: pxToVw(1)
+          background: rgb(204, 204, 204)
+
+        > .verification
+          width: 100%
+          height: pxToVw(20)
+          display: flex
+          align-items: center
+
+          > span 
+            color: rgb(218, 85, 85)
+            font-size: pxToVw(14)
+            font-weight: 400
+            font-family: "Roboto"
+            user-select: none
+
+    > .aproveUser
+      width: pxToVw(110)
+      height: pxToVw(36)
+      padding: pxToVw(12) pxToVw(16)
+      background: rgb(80, 176, 83)
+      border-radius: pxToVw(4)
+      box-sizing: border-box
+      display: flex
+      align-items: center
+      justify-content: center
+      box-shadow: 0 pxToVw(4) pxToVw(4) 0 rgba(106, 174, 94, 0.25)
+      margin-top: auto
+      transition: background 0.3s ease, box-shadow 0.3s ease
+
+      &:hover
+        background: rgb(60, 160, 73)
+        cursor: pointer
+      
+      > span
+        color: rgb(255, 255, 255)
+        font-size: pxToVw(14)
+        font-weight: 400
+        font-family: "Roboto"
+        user-select: none
