@@ -1,4 +1,4 @@
-# orderdesk
+# OrderDesk
 
 ## Project setup
 ```
