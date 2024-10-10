@@ -1,10 +1,6 @@
 const OrderDesk = {
-  state: {
-    name: "Имя"
-  },
-  getters: {
-    name: (state) => state.name 
-  },
+  state: {},
+  getters: {},
   mutations: {},
 };
 

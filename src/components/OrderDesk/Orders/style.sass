@@ -4,3 +4,157 @@ $base: 1920
 
 @function pxToVw($px)
   @return math.div($px, $base) * 100vw
+
+
+.Orders 
+  width: 100%
+  height: 100%
+  display: flex
+  align-items: center
+  justify-content: center
+  background: #EEEEEE
+  position: relative
+
+  > .windowList
+    width: pxToVw(1280)
+    padding: pxToVw(15)
+    display: flex
+    flex-direction: column
+    gap: pxToVw(47)
+
+    > .header
+      width: 100%
+      height: pxToVw(73)
+      display: flex
+      align-items: center
+
+      > span 
+        color: rgb(69, 69, 69)
+        font-size: pxToVw(20)
+        font-weight: 400
+        font-family: "Roboto"
+
+    > .blockOrders
+      width: pxToVw(1250)
+      height: pxToVw(862)
+      background: rgb(255, 255, 255)
+      border-radius: pxToVw(8)
+      display: flex
+      flex-direction: column
+      padding: pxToVw(10) pxToVw(20)
+      gap: pxToVw(32)
+      box-sizing: border-box
+
+      > .create
+        width: pxToVw(73)
+        height: pxToVw(26)
+        display: flex
+        align-items: center
+        justify-content: center
+        background: rgb(80, 176, 83)
+        box-shadow: 0 pxToVw(4) pxToVw(4) 0 rgba(106, 174, 94, 0.25)
+        border-radius: pxToVw(2)
+        align-self: flex-end
+        transition: background 0.3s ease, box-shadow 0.3s ease
+
+        &:hover
+          background: rgb(60, 160, 73)
+          cursor: pointer
+
+        > span
+          color: rgb(255, 255, 255)
+          font-family: "Roboto"
+          font-size: pxToVw(10)
+          font-weight: 400
+
+      > .filters
+        width: 100%
+        display: flex
+        align-items: center
+        justify-content: space-between
+
+        > .serachItem
+          width: pxToVw(597)
+          display: flex
+          align-items: center
+          justify-content: space-between
+          flex-direction: column
+          gap: pxToVw(7)
+          position: relative
+
+          > .cellInput
+            display: flex
+            align-items: center
+            justify-content: space-between
+            width: 100%
+
+            > input
+              background: none
+              font-size: pxToVw(14)
+              font-family: "Roboto"
+              font-weight: 400
+              width: 100%
+
+            > .clickSearch
+              display: flex
+              align-items: center
+              justify-content: center
+              width: pxToVw(24)
+              height: pxToVw(24)
+
+              > img 
+                width: 100%
+                height: 100%
+                transition: transform 0.3s ease
+
+              &.rotated img 
+                transform: rotate(180deg)
+
+          > .separator
+            width: 100%
+            height: pxToVw(1)
+            background: rgb(204, 204, 204)
+
+          > .showListHomes
+            width: 100%
+            height: pxToVw(152)
+            display: flex
+            flex-direction: column
+            position: absolute
+            top: 120%
+            border-radius: pxToVw(2)
+            background: rgb(240, 240, 240)
+            overflow: auto
+
+            &::-webkit-scrollbar
+              display: none
+
+            > .cellItem
+              background: rgb(240, 240, 240)
+              width: 100%
+              height: pxToVw(38)
+              display: flex
+              align-items: center
+              padding: pxToVw(7) pxToVw(10)
+              box-sizing: border-box
+              flex-shrink: 0
+              border-radius: pxToVw(2)
+              transition: background 0.3s ease
+              overflow: hidden
+
+              &:hover
+                background: rgb(60, 160, 73)
+                cursor: pointer
+
+                > span
+                  color: rgb(255, 255, 255)
+
+              > span
+                color: rgb(51, 51, 51)
+                font-family: "Roboto"
+                font-size: pxToVw(13)
+                font-weight: 400
+
+      > .listItems
+        width: 100%
+        height: pxToVw(624)

@@ -17,7 +17,6 @@
     margin: 0;
     box-sizing: border-box;
   }
-  
   input {
     all: unset;
     box-sizing: border-box;
