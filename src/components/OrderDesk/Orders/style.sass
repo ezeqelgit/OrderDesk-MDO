@@ -415,3 +415,63 @@ $base: 1920
       > .nextListing
         width: 100%
         height: pxToVw(40)
+        display: flex
+        justify-content: space-between
+
+        > .amountOrders
+          display: flex
+          align-items: center
+
+          > .currentPages
+            width: 100%
+            gap: pxToVw(16)
+            display: flex
+            align-items: center
+            justify-content: space-between
+
+            > .currentOrdersInPage
+              text-align: left
+
+              > span
+                color: rgb(51, 51, 51)
+                font-size: pxToVw(14)
+                font-family: "Roboto"
+                font-weight: 700
+
+            > .selectOrderInPage
+              display: flex
+              flex-direction: column
+              gap: pxToVw(4)
+
+              > .selectCount
+                width: pxToVw(89)
+                display: flex
+                justify-content: space-between
+                align-items: center
+
+                > input
+                  width: 100%
+                  color: rgb(51, 51, 51)
+                  font-size: pxToVw(14)
+                  font-family: "Roboto"
+                  font-weight: 400
+
+                > .openList
+                  width: pxToVw(24)
+                  height: pxToVw(24)
+                  display: flex
+                  align-items: center
+                  justify-content: center
+
+                  > img
+                    width: 100%
+                    height: 100%
+
+              > .separator
+                width: 100%
+                height: pxToVw(1)
+                background: rgb(204, 204, 204)
+
+        > .searchFromPages
+          width: pxToVw(485)
+          height: 100%

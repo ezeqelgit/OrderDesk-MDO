@@ -14,11 +14,33 @@ export default Vue.extend({
       searchTerm: "",
       premiseId: "" ,
       appeals: [],
+      searchQuery: "",
+      selectedAddress: ""
     }
   },
   created() {
     this.fetchPremises();
     this.fetchAppeals();
+  },
+  computed: {
+    filteredAppeals() {
+      const searchTerm = this.searchQuery.toLowerCase();
+      const selectedAddress = this.selectedAddress.toLowerCase();
+      
+      return this.appeals.filter(appeal => {
+        const appealAddress = appeal.premise ? appeal.premise.address.toLowerCase() : '';
+        const appealNumber = appeal.number ? appeal.number.toString() : '';
+
+        return (appealAddress.includes(searchTerm) || appealNumber.includes(searchTerm)) && 
+              (!this.selectedAddress || appealAddress.includes(selectedAddress));
+      });
+    },
+    getDataPremises() {
+      return this.$store.getters.getApiPremises
+    },
+    getDataHomeList() {
+      return this.$store.getters.getApiHomeList
+    }
   },
   methods: {
     toggleShowList() {
@@ -29,7 +51,7 @@ export default Vue.extend({
     },
     async fetchPremises() {
       try {
-        const response = await axios.get("https://dev.moydomonline.ru/api/geo/v2.0/user-premises/", {
+        const response = await axios.get(this.getDataPremises, {
           headers: {
             Authorization: `Token ${this.token}`
           },
@@ -38,7 +60,6 @@ export default Vue.extend({
             premise_id: this.premiseId
           }
         });
-        // console.log(response.data);
         this.premises = response.data.results;
       } catch (error) {
         console.error("Ошибка при получении списка домов", error.response ? error.response.data : error);
@@ -46,13 +67,12 @@ export default Vue.extend({
     },
     async fetchAppeals() {
       try {
-        const response = await axios.get("https://dev.moydomonline.ru/api/appeals/v1.0/appeals/", {
+        const response = await axios.get(this.getDataHomeList, {
           headers: {
             Authorization: `Token ${this.token}`
           }
         });
         this.appeals = response.data.results;
-        console.log(response.data)
       } catch (error) {
         console.error("Ошибка при получении списка обращений", error.response ? error.response.data : error);
       }
@@ -86,7 +106,12 @@ export default Vue.extend({
       } else if (apartmentLabel) {
         return apartmentLabel;
       }
-      return '';  
+      return '';
+    },
+    selectAddress(address) {
+      this.searchTerm = address;
+      this.selectedAddress = address;
+      this.isListVisible = false;
     }
   }
 })

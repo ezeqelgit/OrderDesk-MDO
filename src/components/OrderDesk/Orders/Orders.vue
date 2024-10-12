@@ -11,7 +11,11 @@
         <div class="filters">
           <div class="serachItem">
             <div class="cellInput">
-              <input type="text" placeholder="Поиск (№ заявки, название)">
+              <input 
+                v-model="searchQuery"
+                type="text"
+                placeholder="Поиск (№ заявки, название)"
+                >
               <div class="clickSearch">
                 <img :src="images['search']">
               </div>
@@ -20,14 +24,14 @@
           </div>
           <div class="serachItem">
             <div class="cellInput">
-              <input type="text" placeholder="Дом" v-model="searchTerm" @input="fetchPremises">
+              <input type="text" placeholder="Дом" v-model="selectedAddress" @input="fetchPremises">
               <div class="clickSearch" @click="toggleShowList" :class="{ rotated: isListVisible }">
                 <img :src="images['downoutline']">
               </div>
             </div>
             <div class="separator"></div>
             <div v-show="isListVisible" class="showListHomes">
-              <div v-for="premise in premises" :key="premise.id" class="cellItem">
+              <div v-for="premise in premises" :key="premise.id" @click="selectAddress(premise.address)" class="cellItem">
                 <span>{{ premise.address }}</span>
               </div>
             </div>
@@ -67,7 +71,7 @@
             </div>
           </div>
           <div class="separator"></div>
-          <div v-for="appeal in appeals" :key="appeal.id" class="tableListOrders">
+          <div v-for="appeal in filteredAppeals" :key="appeal.id" class="tableListOrders">
             <div class="nameTable">
               <div class="number">
                 <div class="hint">
@@ -105,7 +109,26 @@
             <div class="separator"></div>
           </div>
         </div>
-        <div class="nextListing"></div>
+        <div class="nextListing">
+          <div class="amountOrders">
+            <div class="currentPages">
+              <div class="currentOrdersInPage">
+                <span>1–10 из 1500 записей</span>
+              </div>
+              <div class="selectOrderInPage">
+                <div class="selectCount">
+                  <input type="text" placeholder="10">
+                  <div class="openList">
+                    <img :src="images['downoutline']">
+                  </div>
+                </div>
+                <div class="separator"></div>
+              </div>
+            </div>
+            <div class="inputPages"></div>
+          </div>
+          <div class="searchFromPages"></div>
+        </div>
       </div>
     </div>
   </div>
